@@ -27,7 +27,7 @@ allprojects {
         sticky_recycler_version_name = '0.0.1'
         android_version_code = 1
 
-        artifact_group = 'jp.s64.android'
+        artifact_group = 'jp.s64.android.stickyrecycler'
         site_url = 'https://github.com/S64/android-sticky-recycler'
         git_url = 'https://github.com/S64/android-sticky-recycler.git'
         issues_url = 'https://github.com/S64/android-sticky-recycler/issues'
