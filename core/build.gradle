@@ -1,0 +1,96 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+
+group = artifact_group
+version = sticky_recycler_version_name
+
+android {
+    compileSdkVersion android_compilesdk_version
+    buildToolsVersion android_buildtools_version
+
+    defaultConfig {
+        minSdkVersion android_minsdk_version
+        targetSdkVersion android_targetsdk_version
+        versionCode android_version_code
+        versionName sticky_recycler_version_name
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+
+    androidTestCompile("com.android.support.test.espresso:espresso-core:${espresso_version}", {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+    compile "com.android.support:recyclerview-v7:${android_support_library_version}"
+
+    testCompile "junit:junit:${junit_version}"
+}
+
+bintray {
+    user = bintray_user
+    key = bintray_api_key
+
+    configurations = default_configurations
+
+    pkg {
+        repo = default_repo
+        name = 'android-sticky-recycler-core'
+        licenses = default_licenses
+        websiteUrl = site_url
+        issueTrackerUrl = issues_url
+        vcsUrl = git_url
+        labels = shared_labels
+        publicDownloadNumbers = true
+
+        version {
+            name = sticky_recycler_version_name
+            released = toIsoDateFormat(new Date())
+            vcsTag = sticky_recycler_version_name
+        }
+    }
+
+}
+
+install {
+    repositories.mavenInstaller {
+        pom {
+            project {
+                packaging 'aar'
+                scm {
+                    url site_url
+                }
+            }
+        }
+    }
+}
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from android.sourceSets.main.java.srcDirs
+}
+
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives sourcesJar, javadocJar
+}

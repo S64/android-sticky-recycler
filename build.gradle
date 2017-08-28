@@ -1,0 +1,74 @@
+import java.text.DateFormat
+import java.text.SimpleDateFormat
+
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.3.3'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+
+    repositories {
+        jcenter()
+    }
+
+    ext {
+        sticky_recycler_version_name = '0.0.1'
+        android_version_code = 1
+
+        artifact_group = 'jp.s64.android'
+        site_url = 'https://github.com/S64/android-sticky-recycler'
+        git_url = 'https://github.com/S64/android-sticky-recycler.git'
+        issues_url = 'https://github.com/S64/android-sticky-recycler/issues'
+        shared_labels = ['java', 'aar', 'android']
+        default_configurations = ['archives']
+        default_repo = 'maven'
+        default_licenses = ['Apache-2.0']
+
+        android_minsdk_version = 9
+        android_targetsdk_version = 25
+        android_compilesdk_version = 25
+        android_buildtools_version = '26.0.0'
+
+        android_support_library_version = '25.0.1'
+        radiobutton_extended_version = '0.4.0'
+        junit_version = '4.12'
+        espresso_version = '2.2.2'
+
+        Properties properties = new Properties()
+        properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+        bintray_user = properties.getProperty('bintray.user')
+        bintray_api_key = properties.getProperty('bintray.api_key')
+        release_keystore_file = properties.getProperty('release.keystore_file')
+        release_keystore_password = properties.getProperty('release.keystore_password')
+        release_key_alias = properties.getProperty('release.key_alias')
+        release_key_password = properties.getProperty('release.key_password')
+    }
+
+    tasks.withType(JavaCompile) {
+        targetCompatibility = JavaVersion.VERSION_1_7
+        sourceCompatibility = JavaVersion.VERSION_1_7
+    }
+
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+def toIsoDateFormat(Date date) {
+    DateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZZ")
+    return isoFormat.format(date)
+}
