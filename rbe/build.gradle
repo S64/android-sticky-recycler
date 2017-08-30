@@ -39,15 +39,13 @@ dependencies {
 
     compile "jp.s64.android.stickyrecycler:core:${sticky_recycler_version_name}"
 
-    dependencies {
-        compile("jp.s64.android.radiobuttonextended:core:${radiobutton_extended_version}") {
-            exclude module: 'support-annotations'
-        }
+    compile("jp.s64.android.radiobuttonextended:core:${radiobutton_extended_version}") {
+        exclude module: 'support-annotations'
+    }
 
-        compile("jp.s64.android.radiobuttonextended:recycler:${radiobutton_extended_version}") {
-            exclude module: 'support-annotations'
-            exclude module: 'recyclerview-v7'
-        }
+    compile("jp.s64.android.radiobuttonextended:recycler:${radiobutton_extended_version}") {
+        exclude module: 'support-annotations'
+        exclude module: 'recyclerview-v7'
     }
 
     testCompile "junit:junit:${junit_version}"
