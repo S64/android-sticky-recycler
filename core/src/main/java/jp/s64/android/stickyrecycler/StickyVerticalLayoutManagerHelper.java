@@ -80,33 +80,35 @@ public class StickyVerticalLayoutManagerHelper<ITEM, IDENTIFIER, ADAPTER extends
     }
 
     public void onLayoutChildren(RecyclerView.Recycler recycler, RecyclerView.State state) {
-        self.detachAndScrapAttachedViews(recycler);
+        if (self.getChildCount() < 1) { // FIXME(shuma): improve this
+            self.detachAndScrapAttachedViews(recycler);
 
-        final int firstTop = self.getPaddingTop();
-        final int firstPosition = 0;
+            final int firstTop = self.getPaddingTop();
+            final int firstPosition = 0;
 
-        int parentLeft, parentRight, parentBottom;
-        {
-            parentLeft = calcParentLeft();
-            parentRight = calcParentRight();
-            parentBottom = calcParentBottom();
-        }
-        int nextTop;
-        {
-            nextTop = firstTop;
-        }
+            int parentLeft, parentRight, parentBottom;
+            {
+                parentLeft = calcParentLeft();
+                parentRight = calcParentRight();
+                parentBottom = calcParentBottom();
+            }
+            int nextTop;
+            {
+                nextTop = firstTop;
+            }
 
-        for (int i = firstPosition; i < state.getItemCount() && nextTop < parentBottom; i++) {
-            View v = recycler.getViewForPosition(i);
-            self.addView(v, i);
+            for (int i = firstPosition; i < state.getItemCount() && nextTop < parentBottom; i++) {
+                View v = recycler.getViewForPosition(i);
+                self.addView(v, i);
 
-            self.measureChildWithMargins(v, 0, 0);
+                self.measureChildWithMargins(v, 0, 0);
 
-            int bottom = nextTop + self.getDecoratedMeasuredHeight(v);
+                int bottom = nextTop + self.getDecoratedMeasuredHeight(v);
 
-            self.layoutDecoratedWithMargins(v, parentLeft, nextTop, parentRight, bottom);
+                self.layoutDecoratedWithMargins(v, parentLeft, nextTop, parentRight, bottom);
 
-            nextTop = bottom;
+                nextTop = bottom;
+            }
         }
     }
 
