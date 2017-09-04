@@ -18,12 +18,13 @@ package jp.s64.android.stickyrecycler;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.View;
 
-public class StaticLinearLayoutManager<ITEM, IDENTIFIER, ADAPTER extends RecyclerView.Adapter<VH> & IStickyRecyclerAdapter<ITEM, IDENTIFIER, VH>, VH extends RecyclerView.ViewHolder> extends LinearLayoutManager {
+import jp.s64.android.recyclercomponents.ScrollPositionSwitchableLinearLayoutManager;
+
+public class StaticLinearLayoutManager<ITEM, IDENTIFIER, ADAPTER extends RecyclerView.Adapter<VH> & IStickyRecyclerAdapter<ITEM, IDENTIFIER, VH>, VH extends RecyclerView.ViewHolder> extends ScrollPositionSwitchableLinearLayoutManager {
 
     private final StaticLinearLayoutManagerHelper<ITEM, IDENTIFIER, ADAPTER, VH> mHelper = new StaticLinearLayoutManagerHelper<>(this);
 

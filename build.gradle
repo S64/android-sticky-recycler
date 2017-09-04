@@ -21,6 +21,7 @@ allprojects {
 
     repositories {
         jcenter()
+        maven { url 'http://dl.bintray.com/s64/maven' }
     }
 
     ext {
@@ -46,6 +47,7 @@ allprojects {
         junit_version = '4.12'
         espresso_version = '2.2.2'
         guava_version = '22.0-android'
+        recycler_components_version = '0.0.1'
 
         Properties properties = new Properties()
         properties.load(project.rootProject.file('local.properties').newDataInputStream())

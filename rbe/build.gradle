@@ -5,10 +5,6 @@ apply plugin: 'com.jfrog.bintray'
 group = artifact_group
 version = sticky_recycler_version_name
 
-repositories {
-    maven { url 'http://dl.bintray.com/s64/maven' }
-}
-
 android {
     compileSdkVersion android_compilesdk_version
     buildToolsVersion android_buildtools_version
