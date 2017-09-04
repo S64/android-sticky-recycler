@@ -24,8 +24,8 @@ allprojects {
     }
 
     ext {
-        sticky_recycler_version_name = '0.0.2'
-        android_version_code = 2
+        sticky_recycler_version_name = '0.0.3'
+        android_version_code = 3
 
         artifact_group = 'jp.s64.android.stickyrecycler'
         site_url = 'https://github.com/S64/android-sticky-recycler'
