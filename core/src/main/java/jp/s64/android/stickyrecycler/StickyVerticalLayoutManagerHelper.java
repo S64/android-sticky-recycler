@@ -20,9 +20,10 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.google.common.base.Objects;
+
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Objects;
 
 public class StickyVerticalLayoutManagerHelper<ITEM, IDENTIFIER, ADAPTER extends RecyclerView.Adapter<VH> & IStickyRecyclerAdapter<ITEM, IDENTIFIER, VH>, VH extends RecyclerView.ViewHolder> {
 
@@ -39,12 +40,10 @@ public class StickyVerticalLayoutManagerHelper<ITEM, IDENTIFIER, ADAPTER extends
     private View mCurrentStickyView = null;
 
     private final boolean mAutoDrawingOrder;
-    private final boolean mEnableSticky;
 
-    public StickyVerticalLayoutManagerHelper(RecyclerView.LayoutManager self, boolean autoDrawingOrder, boolean enableSticky) {
+    public StickyVerticalLayoutManagerHelper(RecyclerView.LayoutManager self, boolean autoDrawingOrder) {
         this.self = self;
         mAutoDrawingOrder = autoDrawingOrder;
-        mEnableSticky = enableSticky;
         self.setAutoMeasureEnabled(true);
     }
 
@@ -177,7 +176,7 @@ public class StickyVerticalLayoutManagerHelper<ITEM, IDENTIFIER, ADAPTER extends
                     break;
                 }
             }
-            if (mEnableSticky) {
+            {
                 View currentSticky = null, nextSticky = null;
                 {
                     int maxBottom = Integer.MIN_VALUE;
@@ -275,7 +274,7 @@ public class StickyVerticalLayoutManagerHelper<ITEM, IDENTIFIER, ADAPTER extends
                     }
                 }
             }
-            if (mEnableSticky) {
+            {
                 View firstNormal = null, firstSticky = null;
                 {
                     int minNormalTop = Integer.MAX_VALUE;
@@ -331,7 +330,7 @@ public class StickyVerticalLayoutManagerHelper<ITEM, IDENTIFIER, ADAPTER extends
                     }
                 }
             }
-            if (mEnableSticky) {
+            {
                 View currentSticky = null, previousSticky = null;
                 {
                     for (int pass = 1; pass <= 2; pass++) {
@@ -558,13 +557,13 @@ public class StickyVerticalLayoutManagerHelper<ITEM, IDENTIFIER, ADAPTER extends
     protected void notifyStickyChanged(IDENTIFIER identifier, IStickyRecyclerAdapterListener.StickyState state, IStickyRecyclerAdapterListener.ScrollDirection direction) {
         boolean changed = false;
 
-        if (!Objects.equals(mLastStickyIdentifier, identifier)) {
+        if (!Objects.equal(mLastStickyIdentifier, identifier)) {
             mPreviousStickyIdentifier = mLastStickyIdentifier;
             mLastStickyIdentifier = identifier;
             changed = true;
         }
 
-        if (!Objects.equals(mLastStickyState, state)) {
+        if (!Objects.equal(mLastStickyState, state)) {
             mLastStickyState = state;
             changed = true;
         }

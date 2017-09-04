@@ -23,9 +23,9 @@ public class StickyVerticalLayoutManager<ITEM, IDENTIFIER, ADAPTER extends Recyc
 
     protected final StickyVerticalLayoutManagerHelper<ITEM, IDENTIFIER, ADAPTER, VH> mHelper;
 
-    public StickyVerticalLayoutManager(boolean autoDrawingOrder, boolean enableSticky) {
+    public StickyVerticalLayoutManager(boolean autoDrawingOrder) {
         super();
-        mHelper = new StickyVerticalLayoutManagerHelper<>(this, autoDrawingOrder, enableSticky);
+        mHelper = new StickyVerticalLayoutManagerHelper<>(this, autoDrawingOrder);
     }
 
     @Override
