@@ -17,6 +17,11 @@ Example app is available on Google Play Store:
 
 `:example` is wrote w/ **Kotlin**, **Android Architecture Components** (Lifecycle Components), **Dagger2**. Check it out. ;)
 
+<details>
+<summary>Screenshots 📸</summary>
+<img src="assets/screenshot_1.png" width="250"/> <img src="assets/screenshot_2.png" width="250"/>
+</details>
+
 ## Usages
 
 Add following lines to your buildscripts.
