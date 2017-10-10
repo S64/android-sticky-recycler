@@ -4,14 +4,17 @@ An example project / library of sticky recyclerview.
 
 ![](assets/screenrecord_1.gif)
 
-<img src="assets/screenshot_1.png" width="250"/> <img src="assets/screenshot_2.png" width="250"/>
-
 This is contains below components:
 
 - StickyRecyclerAdapter
 - StaticLinearLayoutManager
 - StickyVerticalLayoutManager
 - MultiCheckableStickyAdapter
+
+Example app is available on Google Play Store:
+
+<a href='https://play.google.com/store/apps/details?id=jp.s64.android.stickyrecycler.example&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' height="60" /></a>
+
 
 ## Usages
 
