@@ -79,6 +79,7 @@ public class StickyVerticalLayoutManagerHelper<ITEM, IDENTIFIER, ADAPTER extends
     }
 
     public void onLayoutChildren(RecyclerView.Recycler recycler, RecyclerView.State state) {
+
         if (self.getChildCount() < 1) { // FIXME(shuma): improve this
             self.detachAndScrapAttachedViews(recycler);
 
