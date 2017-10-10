@@ -15,7 +15,7 @@ Example app is available on Google Play Store:
 
 <a href='https://play.google.com/store/apps/details?id=jp.s64.android.stickyrecycler.example&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' height="60" /></a>
 
-`:example` is wrote w/ Kotlin, Android Architecture Components (Lifecycle Components), Dagger2. Check it out. ;)
+`:example` is wrote w/ **Kotlin**, **Android Architecture Components** (Lifecycle Components), **Dagger2**. Check it out. ;)
 
 ## Usages
 
